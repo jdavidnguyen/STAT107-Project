@@ -1,5 +1,4 @@
 # 02_funct_Plots.R
-# Plotting functions (use ggplot2, loaded in 00_requirements.R).
 
 # plot_two_lines : two time series on the same plot
 #   Input : year, series_a, series_b - numeric vectors of the same length
