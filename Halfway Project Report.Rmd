@@ -21,4 +21,9 @@ The main goal of our project is to test the hypothesis that increased government
 
 **Visualization:**
 
+```{r}
+knitr::include_graphics("figures/visual.png")
+knitr::include_graphics("figures/visual2.png")
+```
+
 **Analysis:**
