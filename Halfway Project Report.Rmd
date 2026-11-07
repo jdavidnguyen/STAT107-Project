@@ -19,6 +19,12 @@ The main goal of our project is to test the hypothesis that increased government
 
 **Data:**
 
+Our data come from the World Bank. The file is called WB_WDI_SE_XPD_TOTL_GD_ZS_WIDEF.csv. It shows how much each government spends on education, as a percent of that country’s GDP. The data are yearly, from 1970 to 2025. The file has 250 rows. Each row is a country or a group of countries, like “World” or “Euro area.” It has 95 columns. Most of them just describe the data, like the units. The other 56 columns are the years 1970 to 2025, and they hold the spending value for each year. The variables we use are the country name, the country code, the year, and education spending as a percent of GDP. A lot of the data is missing. About 54% of the country-year values are empty. Some years have much more data than others. There are 31 countries with data in 1970, 216 in 2020, and only 2 in 2025. 
+
+To clean the data, we first read in the file and checked for repeated rows, and there were none. Then we kept only the country name, the country code, and the year columns. Next, we changed the table so that each row shows one country in one year. We also made sure that the year and the spending were stored as numbers. Finally, we removed the empty values. We removed only the empty values and not whole countries, because otherwise almost no data would be left. 
+
+After cleaning, we have 6,372 observations. Spending averages 4.2% of GDP and ranges from 0% to 66.9%. A few very large values need to be checked. The United States has only 7 observations, from 2015 to 2021, between 4.8% and 5.4%.
+
 **Visualization:**
 
 ```{r}
