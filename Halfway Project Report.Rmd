@@ -54,4 +54,3 @@ One of the biggest limitations we currently have is that our U.S. dataset only c
 
 **Summary of Individual Contribution:**
 
-We divided up the project tasks so everyone had clear responsibilities. David and I found our data sources, cleaned up the dataset, and handled the data work, he also wrote the data portion of the report, while I wrote the visualizations. Meanwhile, Ashutosh focused on pulling our ideas together in writing by drafting the abstract, introduction, executive summary, and analysis sections of the report.
