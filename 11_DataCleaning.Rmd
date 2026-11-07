@@ -1,82 +1,92 @@
+
 ---
-title: "11 - Data Cleaning"
-author: "Team 3"
-date: "2026-11-06"
-output:
-  pdf_document: default
-  html_document: default
+title: "Data Cleaning"
+output: html_document
 ---
 
-This file reads the raw data files in `data/`, cleans them, merges them by year, and
-saves the result in `12_DataSaving.RData`.
-
-```{r setup, message=FALSE}
-source("00_requirements.R")
-source("01_funct_DataCleaning.R")
-source("03_funct_ProjectFunctions.R")
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 1. Read the raw data
+## Loading the Data
 
-**NCES Table 106.10** (education spending and nominal GDP). The table was saved from
-Excel as a csv file. The function skips the header rows and the footnotes.
+First, we load the dataset that we will use for our project.
 
-```{r read-nces}
-nces <- read_nces_table106("data/tabn106_10.csv")
-head(nces)
+```{r}
+# Load the original World Bank dataset
+data <- read.csv("WB_WDI_SE_XPD_TOTL_GD_ZS_WIDEF.csv")
+
+# Check the original data
+dim(data)
+summary(data$X2020)
+
+# Create cleaned dataset
+clean_data <- data
+
+# Remove duplicate rows
+clean_data <- unique(clean_data)
+
+# Check available observations for 2020
+sum(!is.na(clean_data$X2020))
+
+# Save cleaned dataset
+save(clean_data, file = "12_DataSaving.RData")
 ```
 
-**FRED GDPC1** is quarterly real GDP. The function averages the four quarters of each
-year to get annual values.
+## Checking for Missing Values
 
-```{r read-fred}
-gdp_annual <- read_fred_annual("data/GDPC1.csv")
-tail(gdp_annual)
+We check if there are any missing values in our dataset.
+
+```{r}
+# Count missing values in each column
+colSums(is.na(data))
+
+# Check the number of rows and columns
+dim(data)
 ```
 
-## 2. Keep the years we can use
+## Removing Missing Values
 
-NCES reports every other year before 1969 and every year from 1969 onward, so we keep
-1969-2019 (51 years in a row). The 2018 and 2019 NCES values are NCES estimates.
+We remove rows with missing values so they do not affect our analysis.
 
-```{r filter-years}
-nces <- filter(nces, year >= 1969, year <= 2019)
-all(diff(nces[["year"]]) == 1)   # TRUE means no years are skipped
+```{r}
+# Remove rows with missing values
+clean_data <- na.omit(data)
+
+# Check the new dimensions
+dim(clean_data)
 ```
 
-## 3. Merge the two data sets by year
+## Checking for Duplicates
 
-```{r merge}
-edu_gdp <- merge(nces, gdp_annual, by = "year")
-edu_gdp <- edu_gdp[order(edu_gdp[["year"]]), ]
-dim(edu_gdp)
-head(edu_gdp)
+Next, we check for duplicate rows and remove them if needed.
+
+```{r}
+# Count duplicate rows
+sum(duplicated(clean_data))
+
+# Remove duplicates
+clean_data <- unique(clean_data)
 ```
 
-## 4. Check for problems
+## Checking Variable Types
 
-```{r checks}
-colSums(is.na(edu_gdp))        # number of missing values in each column
-summary(edu_gdp)
+We check the types of variables to make sure the data is in the correct format.
+
+```{r}
+# Look at the structure of cleaned data
+str(clean_data)
+
+# Summary of the cleaned data
+summary(clean_data)
 ```
 
-## 5. World Bank government spending (supplementary, US only)
+## Saving the Cleaned Data
 
-The World Bank file gives *government* education spending as a % of GDP for about 250
-countries. We keep only the United States. It is a short series, so we only use it as a
-comparison.
+Finally, we save the cleaned dataset so we can use it for the next part of our analysis.
 
-```{r read-wb}
-wb_raw <- read.csv("data/WB_WDI_SE_XPD_TOTL_GD_ZS_WIDEF.csv", check.names = FALSE)
-wb_us <- wb_raw %>%
-  select_country_years() %>%
-  make_data_long() %>%
-  filter_us_wb()
-wb_us
+```{r}
+# Save cleaned data
+save(clean_data, file = "12_DataSaving.RData")
 ```
 
-## 6. Save
-
-```{r save}
-save(nces, gdp_annual, edu_gdp, wb_us, file = "12_DataSaving.RData")
-```
