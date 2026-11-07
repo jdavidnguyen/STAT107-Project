@@ -1,0 +1,70 @@
+
+---
+title: "Data Processing"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading Cleaned Data
+
+We load the dataset that we cleaned in the previous file.
+
+```{r}
+# Load the cleaned dataset
+load("13_DataSaving.RData")
+
+# Create processed dataset
+processed_data <- clean_data
+
+# Save processed data
+save(processed_data, file = "22_DataSaving.RData")
+```
+
+## Exploring the Data
+
+We look at the variables and basic statistics to understand our dataset.
+
+```{r}
+# Check the structure
+str(clean_data)
+
+# Get summary statistics
+summary(clean_data)
+
+# Check the number of observations
+nrow(clean_data)
+```
+
+## Processing the Data
+
+We create a copy of the cleaned dataset to use for our analysis.
+
+```{r}
+# Load cleaned dataset
+load("12_DataSaving.RData")
+
+# Create processed dataset
+processed_data <- clean_data
+
+# Check the number of observations
+nrow(processed_data)
+
+# Check available data for 2020
+sum(!is.na(processed_data$X2020))
+
+# Save processed dataset
+save(processed_data, file = "22_DataSaving.RData")
+```
+
+## Saving Processed Data
+
+We save our processed dataset so we can use it to create graphs.
+
+```{r}
+# Save processed data
+save(processed_data, file = "22_DataSaving.RData")
+```
+
