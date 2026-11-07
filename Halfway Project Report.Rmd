@@ -1,0 +1,24 @@
+---
+title: "How the US Expenditure on Education affects the US GDP"
+author: "Team 3"
+date: "2026-11-05"
+output: pdf_document
+---
+
+**Abstract:**
+
+**Introduction:**
+
+Education plays an important role in shaping the future of individuals and the overall economy of the United States. The amount of money the government spends on education can influence the quality of schools, the resources available to students, and the opportunities they have to succeed. Our central research question is: How does the United States' expenditure on its education system affect the country's overall GDP? We want to understand whether increased government investment in education contributes to long-term economic growth and whether spending more on education can have a positive impact on the country's economy.
+
+This analysis may benefit students, particularly children living in low-income communities who often have less access to quality education and educational resources. By examining the relationship between education spending and GDP, we hope to better understand the economic value of investing in education. If our findings show a positive relationship between education expenditures and GDP, this could help support the argument that investing in education benefits not only individual students but also the country as a whole. This could provide further justification for allocating government funding toward schools and improving educational opportunities for communities that need them most.
+
+The main goal of our project is to test the hypothesis that increased government spending on education is associated with an increase in overall US GDP. Rather than training a model to classify objects or predict categories, we are using historical economic data to investigate the relationship between two measurable variables: government education expenditures and GDP. We plan to examine trends over time, compare changes in education spending with changes in GDP, and use statistical analysis to determine whether a meaningful relationship exists between them. Through this analysis, we hope to gain a better understanding of how education investment relates to economic growth and whether increased spending on education may contribute to a stronger US economy.
+
+**Executive Summary:**
+
+**Data:**
+
+**Visualization:**
+
+**Analysis:**
