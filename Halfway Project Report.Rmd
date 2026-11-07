@@ -8,6 +8,7 @@ output: pdf_document
 **Abstract:**
 
 In this project, we are investigating how government expenditure on education relates to the overall GDP of the United States. Using data from the World Bank and real GDP data, we examine education spending as a percentage of GDP and compare it with changes in the country's economic output. Our current dataset contains seven years of U.S. education expenditure data, from 2015 to 2021. We found that the results show a positive correlation between education spending and real GDP levels. However, we also found that there was almost no correlation when comparing education spending with annual GDP growth. This shows that although both education spending and GDP levels may increase over time, we have not  yet found enough evidence to concretely relate higher education spending directly to economic growth. In the coming weeks, we plan to find more data sets to further prove this relationship. 
+
 **Introduction:**
 
 Education plays an important role in shaping the future of individuals and the overall economy of the United States. The amount of money the government spends on education can influence the quality of schools, the resources available to students, and the opportunities they have to succeed. Our central research question is: How does the United States' expenditure on its education system affect the country's overall GDP? We want to understand whether increased government investment in education contributes to long-term economic growth and whether spending more on education can have a positive impact on the country's economy.
@@ -33,6 +34,7 @@ To clean the data, we first read in the file and checked for repeated rows, and 
 After cleaning, we have 6,372 observations. Spending averages 4.2% of GDP and ranges from 0% to 66.9%. A few very large values need to be checked. The United States has only 7 observations, from 2015 to 2021, between 4.8% and 5.4%.
 
 **Visualization:**
+
 To better understand the data, we created preliminary visualizations, including a histogram, boxplot, and a numerical summary. Our hypothesis stated that increased government spending on education will have a positive relationship with GDP because investing in education can help improve workers' skills, productivity, and economic growth.
 
 The visualizations will help us examine the relationship between education expenditure and GDP in the United States over time. We plan to use a histogram to show how education spending as a percentage of GDP has changed throughout the years. We will also use box plots to compare education expenditure with GDP growth rates to determine whether higher education spending is associated with stronger economic growth. These statistics show that education spending varies across the observations in our dataset.
