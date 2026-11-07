@@ -1,0 +1,95 @@
+
+---
+title: "Data Visualization"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading Processed Data
+
+We load our processed dataset to create visualizations.
+
+```{r}
+# Load the processed dataset
+load("22_DataSaving.RData")
+
+# Get the 2020 values
+education_2020 <- processed_data$X2020
+
+# Remove missing values
+education_2020 <- education_2020[!is.na(education_2020)]
+
+# Check the number of values
+length(education_2020)
+
+# Create histogram
+hist(education_2020,
+     main = "Education Expenditure in 2020",
+     xlab = "Education Expenditure (% of GDP)",
+     ylab = "Frequency",
+     col = "lightblue",
+     breaks = 10)
+```
+
+## Summary Statistics
+
+We start by looking at the summary statistics.
+
+```{r}
+# Summary of the dataset
+summary(processed_data)
+```
+
+## Histogram
+
+We create a histogram to look at the distribution of a numerical variable.
+
+```{r}
+# Load processed dataset
+load("22_DataSaving.RData")
+
+# Get education expenditure for 2020
+education_2020 <- processed_data$X2020
+
+# Remove missing values
+education_2020 <- education_2020[!is.na(education_2020)]
+
+# Check available observations
+length(education_2020)
+
+# Create histogram
+hist(education_2020,
+     main = "Education Expenditure in 2020",
+     xlab = "Education Expenditure (% of GDP)",
+     ylab = "Frequency",
+     col = "lightblue",
+     breaks = 10)
+```
+
+The histogram helps us understand how the values are distributed. We can use it to identify patterns and possible outliers.
+
+## Boxplot
+
+We create a boxplot to look at the spread of the data.
+
+```{r}
+# Create boxplot for 2020
+boxplot(education_2020,
+        main = "Education Expenditure in 2020",
+        ylab = "Education Expenditure (% of GDP)",
+        col = "lightgreen")
+```
+
+The boxplot helps us look at the median, spread, and possible outliers in the dataset.
+
+```{r}
+# Count available observations
+sum(!is.na(processed_data$X2020))
+
+# Check summary statistics
+summary(processed_data$X2020)
+```
+
